@@ -1,0 +1,23 @@
+package Intro;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+public class enabled {
+
+	public static void main(String[] args) {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+		if (driver.findElement(By.className("picker-second")).getAttribute("style").contains("0.5"));{
+			Assert.assertTrue(true);
+		}
+		else {
+			Assert.assertFalse(false);
+		}
+		
+	}
+
+}

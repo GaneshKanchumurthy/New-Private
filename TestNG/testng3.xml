@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "C:\Users\GaneshK\Downloads\testng-1.0.dtd">
+<suite name="grouping">
+	<parameter name="URL" value="abc.com" />
+	<test thread-count="10" name="TestNG">
+		<classes>
+			<class name="demo.demo2" />
+		</classes>
+	</test>
+</suite> <!-- Suite -->

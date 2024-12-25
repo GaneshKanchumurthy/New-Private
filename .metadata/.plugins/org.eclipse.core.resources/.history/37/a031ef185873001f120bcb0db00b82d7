@@ -1,0 +1,27 @@
+package Intro;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Addtocart {
+
+	public static void main(String[] args) {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://rahulshettyacademy.com/seleniumPractise");
+		String[] items = { "Brocolli", "Cucumber", "Carrot" };
+		List<String> listItems = Arrays.asList(items);
+		List<WebElement> products = driver.findElements(By.className("product"));
+		System.out.println();
+		for (WebElement product : products) {
+				if (listItems.contains(product.findElement(By.className("product-name")).getText())) {
+					product.findElement(By.tagName("button")).click();
+			}
+		}
+	}
+}

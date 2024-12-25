@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [grouping]">
+  <test thread-count="5" name="TestNG(failed)">
+    <classes>
+      <class name="demo.demo2">
+        <methods>
+          <include name="stat2"/>
+          <include name="param"/>
+          <include name="stat3"/>
+          <include name="stat4"/>
+          <include name="stat6"/>
+          <include name="stst5"/>
+          <include name="stat7"/>
+        </methods>
+      </class> <!-- demo.demo2 -->
+    </classes>
+  </test> <!-- TestNG(failed) -->
+</suite> <!-- Failed suite [grouping] -->

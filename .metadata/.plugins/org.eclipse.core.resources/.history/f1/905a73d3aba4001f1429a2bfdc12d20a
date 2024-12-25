@@ -1,0 +1,17 @@
+package testgroup.testpackage;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import testgroup.testcomponents.BaseTest;
+
+
+public class Errorvalidation extends BaseTest{
+	
+	@Test
+public void TC2() {
+		login.loggedin("test", "testpass");
+		Assert.assertEquals("'Incorrect email or password.'", login.errormessage());
+	}
+
+}

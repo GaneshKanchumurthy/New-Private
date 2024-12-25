@@ -1,0 +1,58 @@
+package testgroup.testpackage;
+
+import org.openqa.selenium.WebDriver;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import testgroup.pageobject.CartPage;
+import testgroup.pageobject.Checkout;
+import testgroup.pageobject.Confirmationpage;
+import testgroup.pageobject.Login;
+import testgroup.pageobject.Orderhistorypage;
+import testgroup.pageobject.Productcatalogue;
+import testgroup.testcomponents.BaseTest;
+
+public class total extends BaseTest {
+
+	@Test (dataProvider="getdata", groups = {"data"})
+	public void placeOrder(String email, String password, String productName) throws IOException {
+
+		String country = "India";
+		Productcatalogue productcatalogue = login.loggedin(email, password);
+		productcatalogue.products();
+		productcatalogue.getproduct(productName);
+		CartPage cartpage = productcatalogue.addToCart();
+		Boolean match = cartpage.verifyAddedItems(productName);
+		Assert.assertTrue(match);
+		Checkout checkout = cartpage.checkOut();
+		checkout.shippingAddress(country);
+		checkout.countryDropdown();
+		checkout.clickOnCountry(country);
+		Confirmationpage confirmationpage = checkout.placeOrder();
+		Assert.assertTrue(confirmationpage.confirmationmsg());
+
+	}
+
+	@Test(dependsOnMethods = { "placeOrder" }, dataProvider="getdata", groups = {"data"})
+	public void checkOrderHistory(String email, String password, String productName) {
+		login.loggedin(email, password);
+		Orderhistorypage orderHistorypage = login.orderhistorypage();
+		Assert.assertTrue(orderHistorypage.orderValidation(productName));
+	}
+	
+	@DataProvider 
+	public Object[][] getdata() {
+		return new Object[][] {{"test.1@gmail.com","Test@123",  "ZARA COAT 3" },{"test.1@gmail.com","Test@123","ADIDAS ORIGINAL"}};
+	}
+}

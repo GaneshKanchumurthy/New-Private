@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel = "tests" name="Suite">
+  <test thread-count="5" name="OrderCheck">
+    <classes>
+      <class name="testgroup.testpackage.total"/>
+    </classes>
+  </test> 
+  <test thread-count="5" name="Erroralidation">
+    <classes>
+      <class name="testgroup.testpackage.Errorvalidation"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

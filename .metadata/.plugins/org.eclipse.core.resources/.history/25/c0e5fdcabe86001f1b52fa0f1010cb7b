@@ -1,0 +1,9 @@
+
+public class base {
+
+ @Test
+ public static void demo() {
+	 System.out.println("hello");
+ }
+
+}

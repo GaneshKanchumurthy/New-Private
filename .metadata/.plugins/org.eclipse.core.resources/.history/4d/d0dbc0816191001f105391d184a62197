@@ -1,0 +1,5 @@
+package testgroup.testcomponents;
+
+public class BaseTest {
+
+}

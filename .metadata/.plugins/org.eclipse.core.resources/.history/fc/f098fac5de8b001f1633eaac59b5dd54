@@ -1,0 +1,37 @@
+package testgroup.main;
+
+import static org.junit.jupiter.api.DynamicTest.stream;
+import static org.testng.Assert.ARRAY_MISMATCH_TEMPLATE;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class total {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		driver.get("https://rahulshettyacademy.com/client");
+		driver.findElement(By.id("userEmail")).sendKeys("test.1@gmail.com");
+		driver.findElement(By.id("userPassword")).sendKeys("Test@123");
+		driver.findElement(By.name("login")).click();
+		List<WebElement> elems = driver.findElements(By.className("col-lg-4"));
+		elems.stream().filter(p -> p.findElement(By.tagName("b")).getText().equals("ZARA COAT 3"))
+				.map(p -> p.findElement(By.className("fa-shopping-cart"))).forEach(p -> p.click());
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id(".ng-animating")));
+		Thread.sleep(2000);
+		driver.findElement(By.className("btn-custom")).click();
+		
+	}
+
+}

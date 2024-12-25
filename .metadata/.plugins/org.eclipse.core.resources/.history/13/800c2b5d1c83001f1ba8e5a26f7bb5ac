@@ -1,0 +1,17 @@
+package Intro;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class streams {
+
+	public static void main(String[] args) {
+		List <String> names = new ArrayList();
+		names.add("surya");
+		names.add("Ajit");
+		names.add("Sumanth");
+		names.add("Srinu");
+		System.out.println(names.stream().filter(n->n.startsWith("s")).count());
+	}
+
+}

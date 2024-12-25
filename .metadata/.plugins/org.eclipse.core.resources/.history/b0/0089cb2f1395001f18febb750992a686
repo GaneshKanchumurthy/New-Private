@@ -1,0 +1,47 @@
+package testgroup.testpackage;
+
+import org.openqa.selenium.WebDriver;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import testgroup.pageobject.CartPage;
+import testgroup.pageobject.Checkout;
+import testgroup.pageobject.Confirmationpage;
+import testgroup.pageobject.Login;
+import testgroup.pageobject.Productcatalogue;
+import testgroup.testcomponents.BaseTest;
+
+public class total extends BaseTest {
+
+	@Test
+	public void TC1() throws IOException {
+
+		String productName = "ZARA COAT 3";
+		String country = "India";
+		
+		Productcatalogue productcatalogue = login.loggedin("test.1@gmail.com", "Test@123");
+		productcatalogue.products();
+		productcatalogue.getproduct(productName);
+		CartPage cartpage = productcatalogue.addToCart();
+		Boolean match = cartpage.verifyAddedItems(productName);
+		Assert.assertTrue(match);
+		Checkout checkout = cartpage.checkOut();
+		checkout.shippingAddress(country);
+		checkout.countryDropdown();
+		checkout.clickOnCountry(country);
+		Confirmationpage confirmationpage = checkout.placeOrder();
+		Assert.assertTrue(confirmationpage.confirmationmsg());
+		driver.quit();
+		
+	}
+}

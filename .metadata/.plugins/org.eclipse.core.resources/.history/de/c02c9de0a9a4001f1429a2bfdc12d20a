@@ -1,0 +1,10 @@
+package testgroup.testpackage;
+
+import testgroup.pageobject.Productcatalogue;
+import testgroup.testcomponents.BaseTest;
+
+public class tc1 extends BaseTest{
+	
+	
+
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "C:\Users\GaneshK\Downloads\testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+		<listener class-name="Lisreners.Listeners" />
+	</listeners>
+	<test thread-count="10" name="Test">
+		<classes>
+			<class name="demo.demo1" />
+		</classes>
+
+
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

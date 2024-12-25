@@ -1,0 +1,29 @@
+//package Intro;
+//
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//
+//public class introduction {
+//
+//	public static void main(String[] args) {
+//		WebDriver driver = new ChromeDriver();
+//		driver.get("https://rahulshettyacademy.com/");
+//		System.out.println(driver.getTitle());;
+//	}
+//
+//}
+public class Exercise {
+	public static void main (String[] args)
+	int[] numbers = { 1, 2, 4, 5, 67 };
+	System.out.println(numbers[0]);
+	System.out.println(numbers[4])
+	for(int i=numbers.length;i>=0;i--){
+        System.out.println(numbers[i]);
+    }
+	for(i=0;i<numbers.length;i++)
+	{
+		int sum = 0;
+		sum = sum + numbers[i];
+	}
+
+}

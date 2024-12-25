@@ -1,0 +1,9 @@
+package test;
+
+public class base {
+
+	public static void demo() {
+		System.out.println("hello");
+	}
+
+}

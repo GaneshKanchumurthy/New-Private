@@ -1,0 +1,20 @@
+package testgroup.testcomponents;
+
+import java.io.FileInputStream;
+import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class BaseTest {
+	public void intialize() {
+		Properties prop = new Properties();
+		FileInputStream fis = new FileInputStream(System.getProperty("User.dir")+"eclipse-workspace\\tes\\src\\main\\java\\testgroup\\reources\\Global.properties");
+		prop.load(null);
+	WebDriver driver = new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+}
+}
