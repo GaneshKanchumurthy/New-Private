@@ -15,7 +15,7 @@ public class Calendar {
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
+				
 		String year ="2027"; 
 		String y="//button[contains(text(),'" +year+ "')]";
 		String month = "December";
